@@ -1,20 +1,20 @@
-// client/src/main.jsx
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import { ThirdwebProvider, chainId } from '@thirdweb-dev/react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { ChainId, ThirdwebProvider } from '@thirdweb-dev/react';
 
+import { StateContextProvider } from './context';
 import App from './App';
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <ThirdwebProvider desiredChainId={chainId.sepolia}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ThirdwebProvider>
-  </React.StrictMode>
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
+root.render(
+  <ThirdwebProvider desiredChainId={ChainId.Goerli}> 
+    <Router>
+      <StateContextProvider>
+        <App />
+      </StateContextProvider>
+    </Router>
+  </ThirdwebProvider> 
+)
