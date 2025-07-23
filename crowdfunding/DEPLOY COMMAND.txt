@@ -1,0 +1,1 @@
+npx thirdweb@latest deploy -k $env:THIRDWEB_SECRET_KEY
